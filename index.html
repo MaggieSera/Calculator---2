@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic calculator</title>
+    <style>
+        body{
+            background-image: url(background.avif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;  
+        }
+       button{
+            background-image: url(background.avif);
+            padding:25px;
+            margin:10px;
+            border-radius: 12px;
+            font-size: 25px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 500;
+            color:#BC650F;
+            border: none;
+        }
+        #calculator{
+            background-color: #A5AC39;
+            width:40%;
+            border-radius:23px;
+        }
+        input[type="text"]{
+            width:95%;
+            font-size: 95px;
+            font-weight: 700;
+            font-family: fantasy;
+            text-align: right;
+            color:#811A00;
+            margin:8px;
+            border-radius:23px;
+            border:none;
+            background-color: #AA955A;
+        }
+    </style>
+</head>
+<body>
+  <div id="calculator">
+    <input type="text" id="display" placeholder="0" readonly>
+    <div id="keys">
+        <div class="first">
+            <button onclick="clearKey()">A</button>
+            <button onclick="clearKey()">C</button>
+            <button onclick="perc()">%</button>
+            <button onclick="appendKey('/')">/</button>
+        </div>
+        <div class="second">
+            <button onclick="appendKey('7')">7</button>
+            <button onclick="appendKey('8')">8</button>
+            <button onclick="appendKey('9')">9</button>
+            <button onclick="appendKey('*')">*</button>
+        </div>
+        <div class="third">
+            <button onclick="appendKey('4')">4</button>
+            <button onclick="appendKey('5')">5</button>
+            <button onclick="appendKey('6')">6</button>
+            <button onclick="appendKey('+')">+</button>
+        </div>
+        <div class="fourth">
+            <button onclick="appendKey('1')">1</button>
+            <button onclick="appendKey('2')">2</button>
+            <button onclick="appendKey('3')">3</button>
+            <button onclick="appendKey('-')">-</button>
+        </div>
+        <div class="fifth">
+            <button onclick="appendKey('0')">0</button>
+            <button onclick="appendKey('.')">.</button>
+            <button onclick="calculate()" style="width:50%;">=</button>
+        </div>
+    </div>
+  </div>  
+<script>
+    const display=document.getElementById('display');
+    function appendKey(input){
+        display.value += input;
+    }
+    function clearKey(){
+        display.value="";
+    }
+    function calculate(){
+        display.value = eval(display.value);
+    }
+    function perc(){
+        display.value = eval(display.value)/100;
+    }
+</script>
+</body>
+</html>
